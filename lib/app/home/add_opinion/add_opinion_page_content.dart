@@ -29,6 +29,9 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
             TextField(
               decoration: const InputDecoration(
                 hintText: 'Podaj nazwę lokalu',
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.deepPurple, width: 3),
+                ),
               ),
               onChanged: (newValue) {
                 setState(() {
@@ -39,6 +42,12 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
             TextField(
               decoration: const InputDecoration(
                 hintText: 'Podaj nazwę naleśnika',
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.deepPurple,
+                    width: 3,
+                  ),
+                ),
               ),
               onChanged: (newValue) {
                 setState(() {
@@ -57,6 +66,8 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
               max: 6.0,
               divisions: 10,
               label: rating.toString(),
+              activeColor: Colors.deepPurple,
+              inactiveColor: Colors.grey,
             ),
             ElevatedButton(
               onPressed: localName.isEmpty || pancakeName.isEmpty
@@ -69,6 +80,9 @@ class _AddOpinionPageContentState extends State<AddOpinionPageContent> {
                       });
                       widget.onSave();
                     },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+              ),
               child: const Text('Dodaj'),
             ),
           ],

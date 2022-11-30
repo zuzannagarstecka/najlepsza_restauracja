@@ -21,6 +21,9 @@ class MyAccountPageContent extends StatelessWidget {
             onPressed: () {
               FirebaseAuth.instance.signOut();
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurple,
+            ),
             child: const Text('Wyloguj'),
           ),
         ],
