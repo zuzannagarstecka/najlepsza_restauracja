@@ -11,7 +11,7 @@ class LocalsPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LocalsCubit(),
+      create: (context) => LocalsCubit()..start(),
       child: BlocBuilder<LocalsCubit, LocalsState>(
         builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {
