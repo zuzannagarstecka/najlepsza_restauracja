@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
@@ -14,6 +16,8 @@ class LocalsCubit extends Cubit<LocalsState> {
           ),
         );
 
+  StreamSubscription? _streamSubscription;
+
   Future<void> start() async {
     emit(
       const LocalsState(
@@ -23,14 +27,33 @@ class LocalsCubit extends Cubit<LocalsState> {
       ),
     );
 
-    await Future.delayed(const Duration(seconds: 5));
+    _streamSubscription = FirebaseFirestore.instance
+        .collection('locals')
+        .orderBy('rating', descending: true)
+        .snapshots()
+        .listen((data) {
+      emit(
+        LocalsState(
+          documents: data.docs,
+          isLoading: false,
+          errorMessage: '',
+        ),
+      );
+    })
+      ..onError((error) {
+        emit(
+          LocalsState(
+            documents: [],
+            isLoading: false,
+            errorMessage: error.toString(),
+          ),
+        );
+      });
+  }
 
-    emit(
-      const LocalsState(
-        documents: [],
-        errorMessage: 'Błąd połączenia',
-        isLoading: false,
-      ),
-    );
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
   }
 }
