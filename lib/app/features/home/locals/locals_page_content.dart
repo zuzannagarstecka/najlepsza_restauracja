@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:najlepsza_restauracja/app/home/locals/cubit/locals_cubit.dart';
+import 'package:najlepsza_restauracja/app/features/home/locals/cubit/locals_cubit.dart';
 
 class LocalsPageContent extends StatelessWidget {
   const LocalsPageContent({

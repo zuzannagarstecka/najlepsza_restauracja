@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:najlepsza_restauracja/app/home/home_page.dart';
-import 'package:najlepsza_restauracja/app/login/login_page.dart';
+import 'package:najlepsza_restauracja/app/features/home/home_page.dart';
+import 'package:najlepsza_restauracja/app/features/login/login_page.dart';
 import 'firebase_options.dart';
 
 void main() async {

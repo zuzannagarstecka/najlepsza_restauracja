@@ -43,7 +43,7 @@ class LocalsCubit extends Cubit<LocalsState> {
       ..onError((error) {
         emit(
           LocalsState(
-            documents: [],
+            documents: const [],
             isLoading: false,
             errorMessage: error.toString(),
           ),
